@@ -32,6 +32,11 @@ const user = {
 
 const items = [
   {
+    href: '/app/links',
+    icon: BarChartIcon,
+    title: 'Links'
+  },
+  {
     href: '/app/dashboard',
     icon: BarChartIcon,
     title: 'Dashboard'
