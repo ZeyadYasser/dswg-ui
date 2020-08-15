@@ -11,6 +11,7 @@ import ProductListView from 'src/views/product/ProductListView';
 import RegisterView from 'src/views/auth/RegisterView';
 import SettingsView from 'src/views/settings/SettingsView';
 import LinksView from 'src/views/links/LinksView';
+import LinkView from 'src/views/links/LinkView'
 
 const routes = [
   {
@@ -18,6 +19,7 @@ const routes = [
     element: <DashboardLayout />,
     children: [
       { path: 'links', element: <LinksView /> },
+      { path: 'links/:linkName', element: <LinkView /> },
       { path: 'account', element: <AccountView /> },
       { path: 'customers', element: <CustomerListView /> },
       { path: 'dashboard', element: <DashboardView /> },
