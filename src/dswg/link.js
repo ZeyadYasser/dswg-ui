@@ -1,5 +1,5 @@
-import {logPass} from './utils'
-import {BASE_URL} from './config'
+import {logPass} from './utils';
+import {BASE_URL} from './config';
 
 // TODO: Handle status codes
 const fetchLinks = () => {
@@ -7,7 +7,15 @@ const fetchLinks = () => {
   return fetch(linksURL)
     .then(resp => resp.json())
     .then(logPass);
-}
+};
+
+// TODO: Handle status codes
+const fetchLink = (linkName) => {
+  let linksURL = BASE_URL + '/link/' + linkName;
+  return fetch(linksURL)
+    .then(resp => resp.json())
+    .then(logPass);
+};
 
 // TODO: Handle status codes
 const updateLink = (linkName, link) => {
@@ -22,9 +30,25 @@ const updateLink = (linkName, link) => {
   })
     .then(resp => resp.json())
     .then(logPass);
-}
+};
+
+const dummyLink = {
+  name: "",
+  enable: false,
+  allowed_ips: [],
+  port: 0,
+  ipv4_cidr: "",
+  ipv6_cidr: "",
+  mtu: 0,
+  fwmark: 0,
+  private_key: "",
+  default_dns1: "",
+  default_dns2: "",
+};
 
 export {
   fetchLinks,
+  fetchLink,
   updateLink,
-}
+  dummyLink,
+};
