@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link as RouterLink } from 'react-router-dom';
 import {
   Box,
   Switch,
@@ -24,9 +25,11 @@ const LinkRow = ({ className, link, toggleEnable, ...rest }) => {
     <TableRow hover>
       <TableCell>
         <Box alignItems="center" display="flex">
-          <Typography color="textPrimary" variant="body1">
-            {link.name}
-          </Typography>
+          <RouterLink to={"/app/links/" + link.name}>
+            <Typography color="textPrimary" variant="body1">
+              {link.name}
+            </Typography>
+          </RouterLink>
         </Box>
       </TableCell>
       <TableCell>

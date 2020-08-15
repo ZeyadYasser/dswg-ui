@@ -8,10 +8,7 @@ import Page from 'src/components/Page';
 import Results from './Results';
 import Toolbar from './Toolbar';
 
-import {
-  fetchLinks,
-  updateLink
-} from 'src/api/link'
+import api from 'src/dswg';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,12 +24,12 @@ const LinksView = () => {
   const [links, setLinks] = useState([]);
 
   useEffect(() => {
-    fetchLinks()
+    api.fetchLinks()
       .then(setLinks)
       .catch(err => console.log(err));
   }, []);
 
-  const setLink = (linkName, link) => {
+  const updateLink = (linkName, link) => {
     let linksCopy = links.slice();
     let found = false;
 
@@ -45,7 +42,7 @@ const LinksView = () => {
 
     if(!found) throw Error("Link not found");
 
-    updateLink(linkName, link)
+    api.updateLink(linkName, link)
       .then(() => setLinks(linksCopy))
       .catch(err => console.log(err));
   }
@@ -55,7 +52,7 @@ const LinksView = () => {
       <Container maxWidth={false}>
         <Toolbar />
         <Box mt={3}>
-          <Results links={links} setLink={setLink}/>
+          <Results links={links} updateLink={updateLink}/>
         </Box>
       </Container>
     </Page>

@@ -21,11 +21,11 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Results = ({ className, links, setLink, ...rest }) => {
+const Results = ({ className, links, updateLink, ...rest }) => {
   const classes = useStyles();
 
   const toggleEnable = (link) => {
-    setLink(link.name, {
+    updateLink(link.name, {
       enable: !link.enable,
     });
   }
@@ -85,7 +85,7 @@ const Results = ({ className, links, setLink, ...rest }) => {
 Results.propTypes = {
   className: PropTypes.string,
   links: PropTypes.array.isRequired,
-  setLink: PropTypes.func.isRequired
+  updateLink: PropTypes.func.isRequired
 };
 
 export default Results;
