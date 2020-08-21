@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import { Link as RouterLink } from 'react-router-dom';
 import {
   Box,
   Switch,
@@ -22,11 +21,11 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const LinkMinimal = ({ className, link, updateLink, ...rest }) => {
+const PeerMinimal = ({ className, peer, updatePeer, ...rest }) => {
   const classes = useStyles();
 
   const toggleEnable = () => {
-    updateLink({enable: !link.enable});
+    updatePeer({enable: !peer.enable});
   }
 
   return (
@@ -45,55 +44,44 @@ const LinkMinimal = ({ className, link, updateLink, ...rest }) => {
             gutterBottom
             variant="h3"
           >
-            {link.name}
+            {peer.name}
             <Switch
-              checked={link.enable}
+              checked={peer.enable}
               onChange={toggleEnable}
               color="primary"
               name="checkedB"
               inputProps={{ 'aria-label': 'primary checkbox' }}
             />
           </Typography>
-          <Typography
-            color="textSecondary"
-            variant="body1"
-          >
-            {link.ipv4_cidr}
-          </Typography>
-          <Typography
-            color="textSecondary"
-            variant="body1"
-          >
-            {link.ipv6_cidr}
-          </Typography>
+          {peer.allowed_ips.map((ip) => (
+            <Typography
+              color="textSecondary"
+              variant="body1"
+              key={ip}
+            >
+              {ip}
+            </Typography>
+          ))}
         </Box>
       </CardContent>
       <Divider />
       <CardActions>
-        <Box
-          width={1}
-          display="flex"
-          justifyContent="center"
+        <Button
+          color="primary"
+          fullWidth
+          variant="text"
         >
-          <RouterLink to={"/app/links/" + link.name + '/peers'}>
-            <Button
-              color="primary"
-              fullWidth
-              variant="text"
-            >
-              View Peers
-            </Button>
-          </RouterLink>
-        </Box>
+          QR Code
+        </Button>
       </CardActions>
     </Card>
   );
 };
 
-LinkMinimal.propTypes = {
+PeerMinimal.propTypes = {
   className: PropTypes.string,
-  link: PropTypes.object.isRequired,
-  updateLink: PropTypes.func.isRequired,
+  peer: PropTypes.object.isRequired,
+  updatePeer: PropTypes.func.isRequired,
 };
 
-export default LinkMinimal;
+export default PeerMinimal;

@@ -12,6 +12,8 @@ import RegisterView from 'src/views/auth/RegisterView';
 import SettingsView from 'src/views/settings/SettingsView';
 import LinksView from 'src/views/links/LinksView';
 import LinkView from 'src/views/links/LinkView'
+import PeersView from 'src/views/peers/PeersView'
+import PeerView from 'src/views/peers/PeerView'
 
 const routes = [
   {
@@ -20,6 +22,8 @@ const routes = [
     children: [
       { path: 'links', element: <LinksView /> },
       { path: 'links/:linkName', element: <LinkView /> },
+      { path: 'links/:linkName/peers', element: <PeersView /> },
+      { path: 'links/:linkName/peers/:peerName', element: <PeerView /> },
       { path: 'account', element: <AccountView /> },
       { path: 'customers', element: <CustomerListView /> },
       { path: 'dashboard', element: <DashboardView /> },
