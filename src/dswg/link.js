@@ -44,6 +44,8 @@ const dummyLink = {
   private_key: "",
   default_dns1: "",
   default_dns2: "",
+  post_up: [],
+  post_down: [],
 };
 
 export {

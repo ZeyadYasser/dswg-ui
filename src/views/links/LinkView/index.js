@@ -57,7 +57,7 @@ const LinkView = () => {
             md={6}
             xs={12}
           >
-            <LinkDetails link={link} />
+            <LinkDetails link={link} updateLink={updateLink}/>
           </Grid>
         </Grid>
       </Container>
